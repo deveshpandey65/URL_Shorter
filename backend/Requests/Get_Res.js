@@ -8,7 +8,7 @@ let Get_Req=(app,url)=>{
                 return res.status(402).json("Not Found")
             }
             console.log(sortlink)
-            return res.send(`https://${result.real_url}`)
+            return res.redirect(`https://${result.real_url}`)
         })
     }
     catch(err){

@@ -1,5 +1,6 @@
 const connection=require('./connection')
 const Schema=require('./Schema')
+const cors = require('cors');
 const url = require('./Module').url
 const express=require('express')
 const app=express();
@@ -12,7 +13,6 @@ connection();
 middle(app);
 Post_Req(app,url);
 Get_Req(app,url)
-
 
 app.listen(PORT, (req, res) => {
     console.log("SERVER STARTED at port:",PORT)
