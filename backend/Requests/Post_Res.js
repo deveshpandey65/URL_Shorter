@@ -10,8 +10,7 @@ const Post_Req = (app, url) => {
             if(abc){
                 res.send("DUPLICATE ENTRY")
             }
-
-            await url.create({ sort_url:str , real_url: real_url1});
+            await url.create({ sort_url: str, real_url: real_url1, clicks :0});
             return res.status(201).json(str);
         } catch (error) {
             console.error("Error : ", error);

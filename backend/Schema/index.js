@@ -10,6 +10,10 @@ const mongoose=require('mongoose')
             type: String,
             required: true,
         },
+        clicks:{
+            type:Number ,
+            required:true,
+        }
     })
 
 
