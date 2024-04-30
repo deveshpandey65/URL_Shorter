@@ -23,11 +23,11 @@ let Get_Req=(app,url)=>{
                 return res.redirect(`https://${result.real_url}`);
             } catch (err) {
                 console.log("Error:", err);
-                return res.status(500).send("Internal Server Error");
+                return res.status(500).send("Internal Server Error 500");
             }
         });
     } catch (err) {
-        console.log("Error:", err);
+        console.log("Error Occured :", err);
         return res.status(500).send("Internal Server Error");
     }
 
