@@ -8,7 +8,7 @@ const Post_Req = (app, url) => {
             const { real_url1 } = req.body;
             const abc= await url.findOne({ sort_url: str })
             if(abc){
-                res.send("DUPLICATE ENTRY Recieved")
+                res.send("DUPLICATE ENTRY Recieved/")
             }
             await url.create({ sort_url: str, real_url: real_url1, clicks :0});
             return res.status(201).json(str);
