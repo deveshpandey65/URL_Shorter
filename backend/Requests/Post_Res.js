@@ -14,7 +14,7 @@ const Post_Req = (app, url) => {
             return res.status(201).json(str);
         } catch (error) {
             console.error("Error : ", error);
-            return res.status(500).send("ERROR CAPTURED:");
+            return res.status(400).send("ERROR CAPTURED:");
         }
     });
 };
