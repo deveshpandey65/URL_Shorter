@@ -5,10 +5,29 @@ import './App.css';
 
 export default function App() {
   const [isActive, setIsActive] = useState(false);
+  let [sort_data,sort_data_update]=useState('')
+  const [url_data,url_update]=useState(false)
+
+  const copy_to_clip = () => {
+    var copyText = document.getElementById("myInput");
+    copyText.select();
+    copyText.setSelectionRange(0, 99999);
+    navigator.clipboard.writeText(copyText.value);
+    alert("Copied the text: " + copyText.value);
+  }
+
+
+
+
+
+
+
+
   const generate = (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
     const realUrl = formData.get('real_url');
+
     formData.append('real_url1', realUrl);
 
     fetch('http://192.168.85.1:8000/api/data', {
@@ -25,7 +44,9 @@ export default function App() {
         return res.json();
       })
       .then((data) => {
-        console.log(data)
+        sort_data_update(data)
+      
+       url_update(true);
       })
       .catch((error) => {
         console.error('Error:', error);
@@ -46,10 +67,22 @@ export default function App() {
             <h1>Sort Your URL</h1>
           </div>
           <form onSubmit={generate}>
-            <input type='text' placeholder='ENTER YOUR URL' name='real_url' />
+            <input type='text' placeholder='ENTER YOUR URL INCLUDING DOMAIN SUFFIX' name='real_url' />
             <button>GENERATE</button>
           </form>
+          <div>
+            {url_data === true ?
+            <> 
+                <input type='text' id='myInput' value={'http://localhost:8000/link/' + sort_data} />
+                <button onClick={copy_to_clip}>Click To Copy</button></>
+              
+              : ''}
+              
+          </div>
         </div>
+        {console.log(sort_data)}
+       
+        
       </div>
 
     
@@ -71,6 +104,7 @@ export default function App() {
           </table>
         </div>
       )} */}
+     
     </div>
   );
 }
