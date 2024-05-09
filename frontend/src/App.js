@@ -67,7 +67,7 @@ export default function App() {
             <h1>Sort Your URL</h1>
           </div>
           <form onSubmit={generate}>
-            <input type='text' placeholder='ENTER YOUR URL INCLUDING DOMAIN SUFFIX' name='real_url' />
+            <input type='text' placeholder='ENTER YOUR URL INCLUDING DOMAIN SUFFIX DONT ADD HTTP/HTTPS' name='real_url' />
             <button>GENERATE</button>
           </form>
           <div>
